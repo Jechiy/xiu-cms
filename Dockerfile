@@ -13,32 +13,30 @@ RUN apt-get update \
         php-pear \
         php-apc \
 
-    # ç”¨å®ŒåŒ…ç®¡ç†å™¨åå®‰æ’æ‰“æ‰«å«ç”Ÿå¯ä»¥æ˜¾è‘—çš„å‡å°‘é•œåƒå¤§å°
+    # ÓÃÍê°ü¹ÜÀíÆ÷ºó°²ÅÅ´òÉ¨ÎÀÉú¿ÉÒÔÏÔÖøµÄ¼õÉÙ¾µÏñ´óĞ¡
     && apt-get clean \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
-    # å®‰è£… Composerï¼Œæ­¤ç‰©æ˜¯ PHP ç”¨æ¥ç®¡ç†ä¾èµ–å…³ç³»çš„å·¥å…·
-    # Laravel Symfony ç­‰æ—¶é«¦çš„æ¡†æ¶ä¼šä¾èµ–å®ƒ
+    # °²×° Composer£¬´ËÎïÊÇ PHP ÓÃÀ´¹ÜÀíÒÀÀµ¹ØÏµµÄ¹¤¾ß
+    # Laravel Symfony µÈÊ±÷ÖµÄ¿ò¼Ü»áÒÀÀµËü
     && curl -sS https://getcomposer.org/installer \
         | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Apache 2 é…ç½®æ–‡ä»¶ï¼š/etc/apache2/apache2.conf
-# ç»™ Apache 2 è®¾ç½®ä¸€ä¸ªé»˜è®¤æœåŠ¡åï¼Œé¿å…å¯åŠ¨æ—¶ç»™ä¸ªæç¤ºè®©äººç´§å¼ .
+# Apache 2 ÅäÖÃÎÄ¼ş£º/etc/apache2/apache2.conf
+# ¸ø Apache 2 ÉèÖÃÒ»¸öÄ¬ÈÏ·şÎñÃû£¬±ÜÃâÆô¶¯Ê±¸ø¸öÌáÊ¾ÈÃÈË½ôÕÅ.
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 
-    # PHP é…ç½®æ–‡ä»¶ï¼š/etc/php5/apache2/php.ini
-    # è°ƒæ•´ PHP å¤„ç† Request é‡Œå˜é‡æäº¤å€¼çš„é¡ºåºï¼Œè§£æé¡ºåºä»å·¦åˆ°å³ï¼Œåè§£ææ–°å€¼è¦†ç›–æ—§å€¼
-    # é»˜è®¤è®¾å®šä¸º EGPCSï¼ˆENV/GET/POST/COOKIE/SERVERï¼‰
+    # PHP ÅäÖÃÎÄ¼ş£º/etc/php5/apache2/php.ini
+    # µ÷Õû PHP ´¦Àí Request Àï±äÁ¿Ìá½»ÖµµÄË³Ğò£¬½âÎöË³Ğò´Ó×óµ½ÓÒ£¬ºó½âÎöĞÂÖµ¸²¸Ç¾ÉÖµ
+    # Ä¬ÈÏÉè¶¨Îª EGPCS£¨ENV/GET/POST/COOKIE/SERVER£©
     && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
         /etc/php5/apache2/php.ini
 
-# é…ç½®é»˜è®¤æ”¾ç½® App çš„ç›®å½•
+# ÅäÖÃÄ¬ÈÏ·ÅÖÃ App µÄÄ¿Â¼
 RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
 COPY . /app
 WORKDIR /app
-RUN chmod -R  777  /app/content/cache
-RUN chmod -R  777  /app/config.php
 RUN chmod 777 ./start.sh
 
 EXPOSE 80

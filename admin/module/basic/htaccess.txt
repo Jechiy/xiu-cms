@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteRule ^index.html$ index.php
+RewriteRule ^index/(.*)$ index.php?/index/$1
+RewriteRule ^about/(.*)$ index.php?/about/$1
+RewriteRule ^goods/(.*)$ index.php?/goods/$1
+RewriteRule ^article/(.*)$ index.php?/article/$1
+RewriteRule ^recruit/(.*)$ index.php?/recruit/$1
+RewriteRule ^download/(.*)$ index.php?/download/$1
+RewriteRule ^message/(.*)$ index.php?/message/$1
+RewriteRule ^user/(.*)$ index.php?/user/$1
+RewriteRule ^search/(.*)$ index.php?/search/$1
+RewriteRule ^info/(.*)$ index.php?/info/$1

@@ -1,0 +1,10 @@
+<?php
+include('smarty/Smarty.class.php');
+include('admin/common.func.php');
+set_smarty();
+load_lang_pack(array($global['channel']),'admin');
+initial('admin');
+run(array('module'=>'info_main','display'=>'no'));
+$smarty->display('info.php');
+//新秀
+?>

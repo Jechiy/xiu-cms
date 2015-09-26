@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+	<index name="首页">
+		<module name="头部">header</module>
+		<module name="最新文章">new_article</module>
+		<module name="推荐文章">best_article</module>
+		<module name="文章列表">best_cat</module>
+		<module name="友情链接">link</module>
+		<module name="底部">footer</module>
+	</index>
+	<article name="文章频道">
+		<module name="头部">header</module>
+		<module name="最新文章">new_article</module>
+		<module name="推荐文章">best_article</module>
+		<module name="主体">article_main</module>
+		<module name="底部">footer</module>
+	</article>
+	<search name="搜索结果">
+		<module name="头部">header</module>
+		<module name="最新文章">new_article</module>
+		<module name="推荐文章">best_article</module>
+		<module name="主体">search_main</module>
+		<module name="底部">footer</module>
+	</search>
+	<message name="在线留言">
+		<module name="头部">header</module>
+		<module name="最新文章">new_article</module>
+		<module name="推荐文章">best_article</module>
+		<module name="主体">message_main</module>
+		<module name="底部">footer</module>
+	</message>
+	<alert>
+		<module>header</module>
+		<module>alert_main</module>
+		<module>footer</module>
+	</alert>
+</site>

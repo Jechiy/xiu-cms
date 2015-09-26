@@ -1,0 +1,6 @@
+<?php
+$re_config['S_LANG'] = '{$pack_name}';
+$re_config['S_URL_PREFIX'] = '{$index_entrance}?/';
+include('index.php');
+//新秀
+?>

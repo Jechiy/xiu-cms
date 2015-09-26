@@ -1,0 +1,10 @@
+/*--------- 系统信息 ---------*/
+submit_error_info => 对不起，您所提交的信息有误
+reg_success => 注册新用户成功!
+user_pwd_empty => 对不起，用户名和密码不能为空
+re_login => 重新登录
+user_login_success => 登录用户中心成功
+not_exist_or_error => 对不起，用户名不存在或密码不正确
+submit_message => 您的留言提交成功，请等待管理员的审核
+submit_comment => 您的评论提交成功，请等待管理员的审核
+submit_research => 您所填写的调查问卷已提交给网站管理员，非常感谢您参加在线调查

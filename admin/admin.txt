@@ -1,0 +1,7 @@
+<?php
+$re_config['S_LANG'] = '{$pack_name}';
+$re_config['S_URL_PREFIX'] = '{$index_entrance}?/';
+$re_config['S_ADMIN_PATH'] = '{$admin_entrance}';
+include('admin.php');
+//新秀
+?>

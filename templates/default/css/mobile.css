@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+body{margin:0;font-size:14px;font-family:'Microsoft Yahei','宋体',Arial;background:#e3e3e3;color:#333;}
+a{text-decoration:none;color:#333;}
+a:hover{color:#00a9f8;}
+div{word-break:break-all;}
+img{border:none;}
+form,ul,li{margin:0;padding:0;}
+ul,li{list-style:none;}
+textarea{font-size:14px;}
+table{width:100%;border:0;border-collapse:0;border-spacing:0;}
+	
+.clear{clear:both;font-size:0px;}
+.space{height:10px;font-size:0px;}
+.not_found{padding:50px 0;text-align:center;}
+.button{padding:0 8px;margin:0;height:24px;line-height:24px;border:1px solid #ccc;background:#EEE;cursor:pointer;}
+
+#header{width:100%;background:#f5f5f5;}
+#main{width:100%;padding:10px 0 0 0;}
+#footer{width:100%;padding:20px 0;border-top:2px solid #00a9f8;background:#f5f5f5;}
+
+#header .main{margin:0 auto;position:relative;}
+#header .top{height:3px;background:#00a9f8;font-size:1px;}
+#header .logo{padding:5px 10px;}
+#header .logo img{height:40px;}
+
+#nav{width:100%;background:#00a9f8;}
+#nav ul{margin:0 auto;}
+#nav li{float:left;padding:3px 2px;}
+#nav li a{display:block;height:30px;line-height:30px;padding:0 10px;font-size:16px;color:#FFF;}
+#nav li a:hover{background:#FFF;color:#00a9f8;}
+
+.box{padding:0 0 15px 0;}
+.box .head{height:40px;position:relative;border-bottom:2px solid #00a9f8;background:#f5f5f5;}
+.box .head span{display:block;position:absolute;left:0;top:0;min-width:100px;_width:100px;height:40px;line-height:40px;padding:0 10px;text-align:center;font-size:16px;background:#00a9f8;color:#FFF;}
+.box .head .more{display:block;position:absolute;right:10px;top:0;line-height:40px;font-size:14px;color:#00a9f8;}
+.box .main{background:#FFF;}
+
+.here{height:40px;position:relative;border-bottom:2px solid #00a9f8;background:#eee;}
+.here span{display:block;position:absolute;left:0;top:0;min-width:100px;_width:100px;height:40px;line-height:40px;padding:0 10px;text-align:center;font-size:16px;background:#00a9f8;color:#FFF;}
+.here .link{position:absolute;right:12px;top:10px;color:#00a9f8;}
+.here .link a{color:#00a9f8;padding:0 8px;}
+
+.list{padding:0 0 10px 0;}
+.list .main{min-height:50px;_height:50px;padding:8px;}
+.list .main div{padding:0 0 0 8px;line-height:40px;border-bottom:1px dashed #CCC;position:relative;}
+.list .main div span{position:absolute;width:85px;top:0;right:0;color:#666;}
+
+.art_sheet{padding:0;margin:0 0 10px 0;background:#FFF;}
+
+#footer .info{text-align:center;}
+#footer .info a{padding:0 8px 0 0;}
+
+.share{padding:22px 0 0 0;}
+
+.page_link{padding:20px 0;zoom:1;}
+.page_link .inner{float:left;position:relative;left:50%;}
+.page_link .inner_2{float:left;position:relative;left:-50%;}
+.page_link a{display:block;float:left;height:22px;line-height:22px;padding:0 8px;margin:0 6px 0 0;border:1px solid #CCC;background:#DDD;font-size:12px;}
+.page_link .on{font-weight:bold;color:#00a9f8;}
+
+#prev_next{padding:15px 5px;line-height:26px;}
+#prev_next a:hover{color:#00a9f8;}
+
+#article{padding:10px;margin:0 0 10px 0;background:#FFF;}
+#article .title{text-align:center;}
+#article .message{padding:10px;line-height:160%;text-align:center;color:#999;border-bottom:1px dashed #999;}
+#article .main{padding:5px 0;font-size:16px;line-height:150%;min-height:380px;_height:380px;}
+#article .main img{width:98%;margin:0 auto;}
+#article .main table{background:#999;border-spacing:1px;}
+#article .main td{background:#FFF;padding:5px;}
+
+#mes_main{background:#FFF;padding:10px;}
+	
+.mes_sheet{padding:0 10px;color:#333;}
+.mes_sheet li{list-style:none;border-bottom:1px dashed #999;padding:10px 0;}
+.mes_sheet div{line-height:20px;}
+.mes_sheet span{color:#00a9f8;}
+.mes_sheet .reply{border:1px solid #CCC;background:#f5f5f5;margin:10px;padding:10px;}
+	
+#leave_word{padding:10px 0;border:1px solid #CCC;background:#f5f5f5;}
+#leave_word td{padding:5px;}
+#leave_word .l{text-align:right;width:150px;}
+#leave_word .text{width:200px;}
+#leave_word .bt_row{text-align:center;}
+#leave_word textarea{height:100px;width:450px;}
+	
+#comment{margin:0 0 10px 0;background:#FFF;}
+#comment .head{height:40px;position:relative;border-bottom:2px solid #00a9f8;background:#f5f5f5;}
+#comment .head span{display:block;position:absolute;left:0;top:0;min-width:100px;_width:100px;height:40px;line-height:40px;padding:0 10px;text-align:center;font-size:16px;background:#00a9f8;color:#FFF;}
+#comment .main{padding:10px;}
+	
+#info{padding:10px;}
+#info .main{text-align:center;padding:50px 0;}
+#info .main div{padding:10px 0;font-size:16px;}
+#info .main a{color:#00a9f8;}
+#info .main a:hover{text-decoration:underline;}
+	
