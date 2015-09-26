@@ -1,49 +1,45 @@
-# Dockerfile to create a docker image
-FROM node
-MAINTAINER Jechiy
-RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
+FROM ubuntu:trusty
+MAINTAINER Jechiy<773372347@qq.com>
+RUN apt-get update \
+    && apt-get -y install \
+        curl \
+        wget \
+        apache2 \
+        libapache2-mod-php5 \
+        php5-mysql \
+        php5-sqlite \
+        php5-gd \
+        php5-curl \
+        php-pear \
+        php-apc \
 
-RUN set -x \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends curl ca-certificates \
-	&& rm -rf /var/lib/apt/lists/*
-	# grab gosu for easy step-down from root
-RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
-RUN arch="$(dpkg --print-architecture)" \
-    && set -x \
-    && curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$arch" \
-    && curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.2/gosu-$arch.asc" \
-    && gpg --verify /usr/local/bin/gosu.asc \
-    && rm /usr/local/bin/gosu.asc \
-    && chmod +x /usr/local/bin/gosu
+    # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
+    && apt-get clean \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
-ENV GHOST_SOURCE /usr/src/ghost
-WORKDIR $GHOST_SOURCE
+    # 安装 Composer，此物是 PHP 用来管理依赖关系的工具
+    # Laravel Symfony 等时髦的框架会依赖它
+    && curl -sS https://getcomposer.org/installer \
+        | php -- --install-dir=/usr/local/bin --filename=composer
 
-ENV GHOST_VERSION 0.7.0
+# Apache 2 配置文件：/etc/apache2/apache2.conf
+# 给 Apache 2 设置一个默认服务名，避免启动时给个提示让人紧张.
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
 
-RUN buildDeps=' \
-        gcc \
-        make \
-        python \
-        unzip \
-    ' \
-    && set -x \
-    && apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
-    && curl -sSL "http://dl.ghostchina.com/Ghost-0.7.0-zh.zip" -o ghost.zip \
-    && unzip ghost.zip \
-    && npm install --production \
-    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
-    && rm ghost.zip \
-    && npm cache clean \
-    && rm -rf /tmp/npm*
+    # PHP 配置文件：/etc/php5/apache2/php.ini
+    # 调整 PHP 处理 Request 里变量提交值的顺序，解析顺序从左到右，后解析新值覆盖旧值
+    # 默认设定为 EGPCS（ENV/GET/POST/COOKIE/SERVER）
+    && sed -i 's/variables_order.*/variables_order = "EGPCS"/g' \
+        /etc/php5/apache2/php.ini
 
-ENV GHOST_CONTENT /var/lib/ghost
-RUN mkdir -p "$GHOST_CONTENT" && chown -R user:user "$GHOST_CONTENT"
-VOLUME $GHOST_CONTENT
+# 配置默认放置 App 的目录
+RUN mkdir -p /app && rm -rf /var/www/html && ln -s /app /var/www/html
+COPY . /app
+WORKDIR /app
+RUN chmod -R  777  /app/content/cache
+RUN chmod -R  777  /app/config.php
+RUN chmod 777 ./start.sh
 
-COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
-
-EXPOSE 2368
-CMD ["npm", "start"]
+EXPOSE 80
+CMD ["./start.sh"]
